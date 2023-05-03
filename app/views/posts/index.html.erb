@@ -1,1 +1,8 @@
 <h1>hello</h1>
+<%= @posts %>
+<% @posts.each do |post|%>
+    <%= post.title %>
+    <%= post.body %>
+    <%= post.view %>
+    <%= post.publication_date %> <p>
+<% end %>

@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+1.upto(10) do |x|
+    if Post.find_by(title: "#{x} заголовок").nil?
+        Post.create(
+            title: "#{x} заголовок",
+            body: "#{x} текст",
+            view: x,
+            publication_date: "2023-03-#{x}"
+        )
+    end
+end
