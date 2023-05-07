@@ -15,3 +15,6 @@
         )
     end
 end
+Category.create(
+    title: {"Спорт","Кино","Музыка"}
+)
