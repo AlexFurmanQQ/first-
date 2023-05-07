@@ -15,6 +15,9 @@
         )
     end
 end
-Category.create(
-    title: {"Спорт","Кино","Музыка"}
-)
+Category.find_or_create_by(value: "Спорт")
+Category.find_or_create_by(value: "Кино")
+Category.find_or_create_by(value: "Музыка")
+
+puts "seed"
+
