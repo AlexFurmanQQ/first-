@@ -1,8 +1,10 @@
 <h1>hello</h1>
-<%= @posts %>
 <% @posts.each do |post|%>
     <%= post.title %>
     <%= post.body %>
     <%= post.view %>
-    <%= post.publication_date %><p>
+    <%= post.publication_date %>
+    <%= link_to "Кликни", post %>
+    <%= link_to "Изменить", edit_post_path(post) %>
+    <%= link_to 'Удалить', post, method: :delete, data: { confirm: 'Вы уверены?' } %><p>
 <% end %>
