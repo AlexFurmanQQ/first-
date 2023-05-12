@@ -1,4 +1,4 @@
-<h1>Новый пост</h1>
+
 <%= form_with model: @post do |f| %>
     <%= f.text_field :title, lable: "Заголовок", placeholder:"Заголовок", required: true, minlength: 2 %>
     <%= f.text_area :body, placeholder:"Текст", required: true, minlength: 10 %>

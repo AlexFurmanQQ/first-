@@ -14,6 +14,8 @@
             publication_date: "2023-03-#{x}"
         )
     end
+   
+
 end
 Category.find_or_create_by(value: "Спорт")
 Category.find_or_create_by(value: "Кино")
