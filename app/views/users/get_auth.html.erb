@@ -1,0 +1,7 @@
+<h1>Вход</h1>
+<%= form_with url: "/sign-in", method: :post do |f| %>
+    <%= f.email_field :email, placeholder:"Email", required: true, minlength: 4 %><p>
+    <%= f.password_field :password, placeholder:"Пароль", required: true, minlength: 6 %><p>
+    <%= f.submit "Войти" %>
+<% end %>
+

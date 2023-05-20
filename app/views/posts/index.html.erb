@@ -1,4 +1,7 @@
 <h1>hello</h1>
+<% if user_signed_in? %>
+    <%= current_user.user_name %>
+<% end %>
 <% @posts.each do |post|%>
     <%= post.title %>
     <%= post.body %>
@@ -7,7 +10,6 @@
     <%= link_to "Кликни", post %>
     <%= link_to "Изменить", edit_post_path(post) %>
     <%= link_to 'Удалить', post, class: "btn btn-danger", method: :delete, data: { confirm: 'Вы уверены?' } %>
-    
-
 <p>
 <% end %>
+
