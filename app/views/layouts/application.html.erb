@@ -12,7 +12,7 @@
 
   <body>
     <% if user_signed_in? %>
-      Здравствуйсте, <%= current_user.user_name %>
+      Здравствуйсте, <%= current_user.user_name%>
     <% else %> 
       <%= link_to "Регистрация", sign_up_path %>
       <%= link_to "Войти", sign_in_path %>
