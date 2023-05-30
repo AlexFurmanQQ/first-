@@ -4,11 +4,13 @@ class UsersController < ApplicationController
     end
     
     def create
+        Print.p(params)
         email = params["user"]["email"]
         user = User.find_by(email: email)
         if user.nil?
             @user = User.new user_params
             if @user.save
+                @user.update(code_email_conformation: SecureRandom.hex) 
                 session["user_id"] = @user.id
                 UserMailer.with(email: email).email_conformation.deliver_now
                 redirect_to root_path
