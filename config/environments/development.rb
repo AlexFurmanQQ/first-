@@ -1,6 +1,18 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+ActionMailer::Base.raise_delivery_errors = true
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+    address: 'smtp.yandex.ru',
+    port: 465,
+    domain: 'mail.yandex.ru',
+    authentication: 'plain',
+    user_name: 'AlFur2000@yandex.ru',
+    password: 'dobussujcqxqbtnn',
+    enable_starttls_auto: true
+  }
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
