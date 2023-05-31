@@ -12,7 +12,7 @@ class UsersController < ApplicationController
             if @user.save
                 @user.update(code_email_conformation: SecureRandom.hex) 
                 session["user_id"] = @user.id
-                UserMailer.with(email: email).email_conformation.deliver_now
+                SentEmailCreateUserJob.perform_now email
                 redirect_to root_path
             else 
                 render :new
