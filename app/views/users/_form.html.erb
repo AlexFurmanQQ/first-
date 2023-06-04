@@ -2,5 +2,6 @@
     <%= f.text_field :user_name, lable: "Имя", placeholder:"Имя", required: true, minlength: 1 %><p>
     <%= f.email_field :email, placeholder:"Email", required: true, minlength: 4 %><p>
     <%= f.password_field :password, placeholder:"Пароль", required: true, minlength: 6 %><p>
+    <%= f.file_field :avatar %><p>
     <%= f.submit "Зерегистрироваться" %>
 <% end %>

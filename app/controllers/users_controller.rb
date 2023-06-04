@@ -9,6 +9,7 @@ class UsersController < ApplicationController
         user = User.find_by(email: email)
         if user.nil?
             @user = User.new user_params
+            @user.avatar.attach(params["user"][:avatar])
             if @user.save
                 @user.update(code_email_conformation: SecureRandom.hex) 
                 session["user_id"] = @user.id
@@ -43,7 +44,7 @@ class UsersController < ApplicationController
 
     private 
     def user_params
-        params.require(:user).permit(:email, :password, :user_name) 
+        params.require(:user).permit(:email, :password, :user_name, :avatar) 
     end
 end
 

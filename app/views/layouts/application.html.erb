@@ -12,7 +12,11 @@
 
   <body>
     <% if user_signed_in? %>
-      Здравствуйсте, <%= current_user.user_name%>
+      Здравствуйсте, <%= current_user.user_name%><p>
+      <% if current_user.avatar.attached? %>
+        <%= image_tag current_user.avatar.blob, style: "width: 100px; display: block" %>
+        <%= current_user.avatar.download %>
+      <% end %>
     <% else %> 
       <%= link_to "Регистрация", sign_up_path %>
       <%= link_to "Войти", sign_in_path %>
