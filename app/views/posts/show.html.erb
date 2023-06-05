@@ -4,6 +4,18 @@
 <%= @post.publication_date %><p>
 
 
+<%= form_with model: [@post, @post_coment] do |f| %>
+    <%= f.label "Ваш коммент" %>
+    <%= f.text_field :message %>
+<%end%>
+
+<% @post_coments.each do |post_coment| %>
+    <%= post_coment.message %><p>
+    
+   
+<% end %>
+
+
 
 
 
