@@ -4,19 +4,24 @@ class PostsController < ApplicationController
         @posts = Post.all
     end
     def show
-        @post_coments = @post.post_coments.order(created_at: :desc)
-        @post_coment = @post.post_coments.build
+        @post_comments = @post.post_comments.order(created_at: :desc)
+        @post_comment = @post.post_comments.build
     end
     def new
         @post = Post.new   
     end
     def create
-        @post = Post.new post_params
-        @post.publication_date = Time.now
-        if @post.save 
-            redirect_to post_path @post 
+        Print.p(user_signed_in?)
+        if user_signed_in?
+            @post = Post.new post_params
+            @post.publication_date = Time.now
+            if @post.save 
+                redirect_to post_path @post 
+            else
+                render :new
+            end
         else
-           render :new
+            redirect_to root_path 
         end
     end
     def edit

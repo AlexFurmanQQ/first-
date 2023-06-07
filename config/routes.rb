@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'sign-in', to: 'users#get_auth'
   post 'sign-in', to: 'users#set_auth'
   resources :posts do
-    resources :post_coments
+    resources :post_comments
   end
 
 

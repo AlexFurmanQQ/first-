@@ -3,17 +3,19 @@
 <%= @post.view %>
 <%= @post.publication_date %><p>
 
-
-<%= form_with model: [@post, @post_coment] do |f| %>
-    <%= f.label "Ваш коммент" %>
-    <%= f.text_field :message %>
-<%end%>
-
-<% @post_coments.each do |post_coment| %>
-    <%= post_coment.message %><p>
-    
-   
+<% if user_signed_in? %>
+    <%= form_with model: [@post, @post_comment] do |f| %>
+        <%= f.label "Ваш коммент" %>
+        <%= f.text_field :message, minlength: 8 %>
+        <%= f.submit "Добавить коммент" %>
+    <%end%>
 <% end %>
+
+<% @post_comments.each do |post_comment| %>
+    <%= post_comment.message %><p>
+<% end %>
+
+
 
 
 
