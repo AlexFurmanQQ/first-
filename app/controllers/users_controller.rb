@@ -1,4 +1,5 @@
 class UsersController < ApplicationController 
+    skip_before_action :verify_authenticity_token
     def new
         @user = User.new
     end
@@ -15,9 +16,12 @@ class UsersController < ApplicationController
                 session["user_id"] = @user.id
                 SentEmailCreateUserJob.perform_now email
                 redirect_to root_path
+                # render json: {error: false}
             else 
                 render :new
             end
+        else 
+            render json: { error: true, message: "пользователь уже существует" }
         end    
     end
     def get_auth

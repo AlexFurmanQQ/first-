@@ -2,6 +2,12 @@ class PostsController < ApplicationController
     before_action :set_post, only: %i[ show edit update destroy ]
     def index
         @posts = Post.all
+        respond_to do |format| 
+            format.html { @posts } 
+            format.json { render json: { posts: @posts}}
+            
+        end
+
     end
     def show
         @post_comments = @post.post_comments.order(created_at: :desc)
@@ -15,10 +21,13 @@ class PostsController < ApplicationController
         if user_signed_in?
             @post = Post.new post_params
             @post.publication_date = Time.now
-            if @post.save 
-                redirect_to post_path @post 
-            else
-                render :new
+            respond_to do |format|
+                if @post.save 
+                    format.html { redirect_to post_path @post } 
+                    format.json { render :show, status: :created, location: @post }
+                else
+                    render :new
+                end
             end
         else
             redirect_to root_path 

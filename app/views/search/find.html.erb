@@ -1,0 +1,9 @@
+<% @posts.each do |post|%>
+    <%= post.title %>
+    <%= post.body %>
+    <%= post.view %>
+    <%= post.publication_date %>
+    <%= link_to "Кликни", post %>
+
+<p>
+<% end %>

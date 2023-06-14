@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   resources :posts do
     resources :post_comments
   end
+  get '/search/', to: 'search#find'
+  get '/search_like/', to: 'search#find_like'
+  get '/search_pg/', to: 'search#search_pg'
+
 
 
 end

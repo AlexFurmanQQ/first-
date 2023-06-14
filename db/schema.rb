@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2023_06_05_150257) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -48,7 +51,7 @@ ActiveRecord::Schema.define(version: 2023_06_05_150257) do
 
   create_table "post_comments", force: :cascade do |t|
     t.string "message"
-    t.integer "post_id"
+    t.bigint "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_post_comments_on_post_id"

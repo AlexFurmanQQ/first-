@@ -3,7 +3,7 @@
     <%= current_user.user_name %>
 <% end %>
 <% @posts.each do |post|%>
-    <%= post.title %>
+    <h1><%= post.title %></h1>
     <%= post.body %>
     <%= post.view %>
     <%= post.publication_date %>
@@ -12,4 +12,5 @@
     <%= link_to 'Удалить', post, class: "btn btn-danger", method: :delete, data: { confirm: 'Вы уверены?' } %>
 <p>
 <% end %>
+Я в index
 

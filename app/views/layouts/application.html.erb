@@ -21,6 +21,7 @@
       <%= link_to "Регистрация", sign_up_path %>
       <%= link_to "Войти", sign_in_path %>
     <% end %> 
+    <%= render partial: "shared/search" %>
     <%= yield %>
   </body>
 </html>
