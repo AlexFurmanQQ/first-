@@ -45,6 +45,15 @@ class UsersController < ApplicationController
         end
 
     end
+    def user_all
+        @users = User.all
+        respond_to do |format| 
+            format.html { @users } 
+            format.json { render json: { users: @users}}
+            
+        end
+
+    end
 
     private 
     def user_params
