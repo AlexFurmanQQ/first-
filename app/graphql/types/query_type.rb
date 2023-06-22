@@ -31,13 +31,44 @@ module Types
       a * b
     end
 
-    field :post, String do 
+    field :post, Types::PostType do 
       argument :id, Integer, required: true 
     end
     def post (id:)
-      post = Post.find_by(29)
-      "Привет"
+      post = Post.find(id)
     end
+
+
+    field :current_user, Types::CurrentUserType, null: false do
+    end
+    def current_user
+      {
+        "id": 15,
+        "user_name": "Alex"
+      }
+    end
+
+    field :users, [Types::CurrentUserType], null: false do
+    end
+    def users
+      [
+        {
+          "id": 15,
+          "user_name":{
+            "first_name": "Nick",
+            "second_name": "Martin"
+          }
+        },
+        {
+          "id": 20,
+          "user_name": {
+            "first_name": "Bon",
+            "second_name": "Jon"
+          }
+        }
+      ]
+    end
+
     
   end
 end
